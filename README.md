@@ -14,11 +14,10 @@ if you want to let the user select an example image, e.g. for a computer vision 
 </h3>
 
 ---
-<!--
+
 <p align="center">
-    <a href="https://image-select.streamlitapp.com/"><img src="demo.gif" width=600></a>
+    <a href="https://image-select.streamlitapp.com/"><img src="images/demo.gif" width=600></a>
 </p>
--->
 
 
 ## Installation
