@@ -1,6 +1,6 @@
 # streamlit-image-select 🖼️
 
-[![Badge](https://img.shields.io/badge/add%20one-badge-blue)](https://shields.io/)
+[![PyPI](https://img.shields.io/pypi/v/streamlit-image-select)](https://pypi.org/project/streamlit-image-select/)
 
 **An image select component for Streamlit.**
 
