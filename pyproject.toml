@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "streamlit-image-select"
+version = "0.1.0"
+description = "🖼️ An image select component for Streamlit"
+authors = ["Johannes Rieke <johannes.rieke@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+streamlit = "^1.12.0"
+
+[tool.poetry.dev-dependencies]
+watchdog = "^2.1.9"
+black = "^22.6.0"
+isort = "^5.10.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
