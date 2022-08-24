@@ -82,18 +82,21 @@ This starts the frontend code on port 3001.
 Open another terminal and run:
 
 ```bash
+cp demo/streamlit_app.py .
 poetry shell
-streamlit run demo.py
+streamlit run streamlit_app.py
 ```
 
-This starts the demo app. Now you can make changes to the Python or Javascript code in 
-`streamlit_image_select` and the demo app should update automatically!
+This copies the demo app to the root dir (so you have something to work with and see 
+your changes!) and then starts it. Now you can make changes to the Python or Javascript 
+code in `streamlit_image_select` and the demo app should update automatically!
 
 
 ### Publishing on PyPI
 
 Switch the variable `_RELEASE` in `streamlit_image_select/__init__.py` to `True`. 
-Increment the version number in `pyproject.toml`. 
+Increment the version number in `pyproject.toml`. Make sure the copy of the demo app in 
+the root dir is deleted or merged back into the demo app in `demo/streamlit_app.py`.
 
 Build the frontend code with:
 
@@ -105,7 +108,7 @@ npm run build
 After this has finished, build and upload the package to PyPI:
 
 ```bash
-cd ..
+cd ../..
 poetry build
 poetry publish
 ```
