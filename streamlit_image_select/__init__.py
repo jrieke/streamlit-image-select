@@ -7,7 +7,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 from PIL import Image
 
-_RELEASE = False
+_RELEASE = True
 
 if not _RELEASE:
     _component_func = components.declare_component(
@@ -36,13 +36,17 @@ def _encode_numpy(img):
 
 
 def image_select(label: str, images: list, key: str = None):
-    """Shows an image select component.
+    """Shows several images and returns the image selected by the user.
 
     Args:
         label (str): The label shown above the images.
         images (list): The images to show. Allowed image formats are paths to local
             files, URLs, PIL images, and numpy arrays.
         key (str, optional): The key of the component. Defaults to None.
+        
+    Returns:
+        (any): The image selected by the user (same object and type as passed to 
+            `images`).
     """
 
     # TODO: Check if images exist and raise exception if not.

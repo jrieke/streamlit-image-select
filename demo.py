@@ -27,6 +27,8 @@ def add_sunglasses(img, position):
     pil_img.paste(sunglasses, position, sunglasses)
     return pil_img
 
+st.set_page_config("Demo for streamlit-image-select", "🖼️")
+
 
 st.write(
     f'<span style="font-size: 78px; line-height: 1">🖼️</span>',
@@ -39,6 +41,9 @@ You can pass in different image formats: local files, URLs, PIL images, and nump
 arrays.
 """
 
+with st.expander("API reference"):
+    st.help(image_select)
+    
 with st.echo():
     img = image_select(
         "Select a cat",
@@ -83,7 +88,7 @@ else:
 """
 ## Step 2: Use the return value
 It's just the same value you passed into the list of images above. Note that you can 
-pipe it directly into `st.image`.
+pipe it directly into `st.image` (or add some cool 😎).
 """
 with st.echo():
     st.write(img)
