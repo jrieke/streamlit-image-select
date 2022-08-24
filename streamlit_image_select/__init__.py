@@ -1,6 +1,7 @@
 import base64
 import io
 import os
+from pathlib import Path
 
 import numpy as np
 import streamlit as st
@@ -14,9 +15,9 @@ if not _RELEASE:
         "image_select", url="http://localhost:3001"
     )
 else:
-    parent_dir = os.path.dirname(os.path.abspath(__file__))
-    build_dir = os.path.join(parent_dir, "frontend/build")
-    _component_func = components.declare_component("image_select", path=build_dir)
+    path = (Path(__file__).parent / "frontend" / "build").resolve()
+    print(path)
+    _component_func = components.declare_component("image_select", path=path)
 
 
 @st.experimental_memo
@@ -43,9 +44,9 @@ def image_select(label: str, images: list, key: str = None):
         images (list): The images to show. Allowed image formats are paths to local
             files, URLs, PIL images, and numpy arrays.
         key (str, optional): The key of the component. Defaults to None.
-        
+
     Returns:
-        (any): The image selected by the user (same object and type as passed to 
+        (any): The image selected by the user (same object and type as passed to
             `images`).
     """
 
