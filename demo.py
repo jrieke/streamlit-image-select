@@ -6,6 +6,8 @@ import requests
 import streamlit as st
 from PIL import Image
 
+from streamlit_image_select import image_select
+
 
 def add_sunglasses(img, position):
     sunglasses = Image.open("images/red_sunglasses.png")
