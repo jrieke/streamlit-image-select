@@ -6,8 +6,6 @@ import requests
 import streamlit as st
 from PIL import Image
 
-from streamlit_image_select import image_select
-
 
 def add_sunglasses(img, position):
     sunglasses = Image.open("images/red_sunglasses.png")
@@ -27,6 +25,7 @@ def add_sunglasses(img, position):
     pil_img.paste(sunglasses, position, sunglasses)
     return pil_img
 
+
 st.set_page_config("Demo for streamlit-image-select", "🖼️")
 
 
@@ -43,8 +42,10 @@ arrays.
 
 with st.expander("API reference"):
     st.help(image_select)
-    
+
 with st.echo():
+    from streamlit_image_select import image_select
+
     img = image_select(
         "Select a cat",
         [

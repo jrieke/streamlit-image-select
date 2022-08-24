@@ -1,9 +1,12 @@
 [tool.poetry]
 name = "streamlit-image-select"
-version = "0.1.0"
+version = "0.1.3"
 description = "🖼️ An image select component for Streamlit"
 authors = ["Johannes Rieke <johannes.rieke@gmail.com>"]
 license = "MIT"
+readme = "README.md"
+# This is required so the frontend code is properly included in the wheel. 
+include = ["streamlit_image_select/frontend/build/**/*"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
