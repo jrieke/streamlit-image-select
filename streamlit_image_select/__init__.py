@@ -8,7 +8,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 from PIL import Image
 
-_RELEASE = True
+_RELEASE = False
 
 if not _RELEASE:
     _component_func = components.declare_component(
@@ -35,13 +35,15 @@ def _encode_numpy(img):
     return f"data:image/jpeg;base64, {encoded}"
 
 
-def image_select(label: str, images: list, key: str = None):
+def image_select(label: str, images: list, captions: list = None, key: str = None):
     """Shows several images and returns the image selected by the user.
 
     Args:
         label (str): The label shown above the images.
         images (list): The images to show. Allowed image formats are paths to local
             files, URLs, PIL images, and numpy arrays.
+        captions (list of str): The captions to show below the images. Defaults to None, 
+            in which case no captions are shown.
         key (str, optional): The key of the component. Defaults to None.
 
     Returns:
@@ -62,6 +64,6 @@ def image_select(label: str, images: list, key: str = None):
             encoded_images.append(img)
 
     component_value = _component_func(
-        label=label, images=encoded_images, key=key, default=0
+        label=label, images=encoded_images, captions=captions, key=key, default=0
     )
     return images[component_value]

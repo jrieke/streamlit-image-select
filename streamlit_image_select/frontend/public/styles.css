@@ -33,7 +33,7 @@ label {
     gap: 0.5rem;
 }
 
-.image-picker .option {
+.image-picker .box {
     border: 1px solid rgba(49, 51, 63, 0.2);
     border-radius: 0.25rem;
     padding: calc(0.25rem + 1px);
@@ -41,38 +41,48 @@ label {
     height: 10rem;
 }
 
-.image-picker .option.dark {
+.image-picker .box.dark {
     border-color: rgba(250, 250, 250, 0.2);
     background-color: rgb(19, 23, 32);
 }
 
-.image-picker .thumbnail {
+.image-picker .image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     opacity: 0.8;
 }
 
-.image-picker .option:hover {
+.image-picker .box:hover {
     border-color: var(--primary-color);
     cursor: pointer;
 }
 
-.image-picker .thumbnail:hover {
+.image-picker .image:hover {
     opacity: 1;
     /* filter: brightness(1.1); */
 }
 
 
-.image-picker .option.selected {
+.image-picker .box.selected {
     border-color: var(--primary-color);
     border-width: 2px;
     padding: 0.25rem;
     /* box-shadow: rgb(255 75 75 / 50%) 0px 0px 0px 0.2rem; */
 }
 
-.image-picker .thumbnail.selected {
+.image-picker .image.selected {
     opacity: 1;
     /* filter: brightness(1.1); */
 }
 
+.image-picker .caption {
+    margin-top: 0.25rem;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(49, 51, 63, 0.6);
+}
+
+.image-picker .caption.dark {
+    color:rgba(250, 250, 250, 0.6);
+}

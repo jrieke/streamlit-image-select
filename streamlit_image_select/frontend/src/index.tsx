@@ -18,11 +18,11 @@ function onRender(event: Event): void {
     labelDiv.style.font = data.theme.font
     labelDiv.style.color = data.theme.textColor
     if (data.theme.base === "dark") {
-      document.body.querySelectorAll(".option").forEach((el) => {
+      document.body.querySelectorAll(".box, .caption").forEach((el) => {
         el.classList.add("dark")
       })
     } else {
-      document.body.querySelectorAll(".option").forEach((el) => {
+      document.body.querySelectorAll(".box, .caption").forEach((el) => {
         el.classList.remove("dark")
       })
     }
@@ -30,18 +30,29 @@ function onRender(event: Event): void {
 
   label.textContent = data.args["label"]
   let images = data.args["images"]
+  let captions = data.args["captions"]
+  // console.log(captions)
 
   if (imagesDiv.childNodes.length === 0) {
     images.forEach((image: string, i: number) => {
-      let imgDiv = imagesDiv.appendChild(document.createElement("div"))
-      imgDiv.classList.add("option")
+      let container = imagesDiv.appendChild(document.createElement("div"))
 
-      let img = imgDiv.appendChild(document.createElement("img"))
-      img.classList.add("thumbnail")
+      let box = container.appendChild(document.createElement("div"))
+      box.classList.add("box")
+
+      let img = box.appendChild(document.createElement("img"))
+      img.classList.add("image")
       img.src = image
 
+      if (captions) {
+        let desc = container.appendChild(document.createElement("div"))
+        desc.classList.add("caption")
+        desc.textContent = captions[i]
+      }
+
+      // TODO: Change this to use `default` instead of just 0.
       if (i === 0) {
-        imgDiv.classList.add("selected")
+        box.classList.add("selected")
         img.classList.add("selected")
       }
 
@@ -50,7 +61,7 @@ function onRender(event: Event): void {
           el.classList.remove("selected")
         })
         Streamlit.setComponentValue(i)
-        imgDiv.classList.add("selected")
+        box.classList.add("selected")
         img.classList.add("selected")
       }
     })
