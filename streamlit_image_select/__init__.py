@@ -16,7 +16,6 @@ if not _RELEASE:
     )
 else:
     path = (Path(__file__).parent / "frontend" / "build").resolve()
-    print(path)
     _component_func = components.declare_component("image_select", path=path)
 
 
