@@ -39,7 +39,7 @@ st.write(
 # Demo for [streamlit-image-select](https://github.com/jrieke/streamlit-image-select)
 ## Step 1: Create the component
 You can pass in different image formats: local files, URLs, PIL images, and numpy 
-arrays.
+arrays. Captions are optional!
 """
 
 with st.expander("API reference"):
@@ -49,13 +49,14 @@ with st.echo():
     from streamlit_image_select import image_select
 
     img = image_select(
-        "Select a cat",
-        [
+        label="Select a cat",
+        images=[
             "images/cat1.jpeg",
             "https://bagongkia.github.io/react-image-picker/0759b6e526e3c6d72569894e58329d89.jpg",
             Image.open("images/cat3.jpeg"),
             np.array(Image.open("images/cat4.jpeg")),
         ],
+        captions=["A cat", "Another cat", "Oh look, a cat!", "Guess what, a cat..."],
     )
 
 # st.file_uploader("Or upload your own cat!", type=["jpg", "jpeg", "png"])
