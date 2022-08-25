@@ -26,6 +26,8 @@ function onRender(event: Event): void {
         el.classList.remove("dark")
       })
     }
+
+    // TODO: Gray out the component if it's disabled. 
   }
 
   label.textContent = data.args["label"]

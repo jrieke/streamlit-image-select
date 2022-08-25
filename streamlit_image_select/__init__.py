@@ -51,7 +51,11 @@ def image_select(label: str, images: list, captions: list = None, key: str = Non
             `images`).
     """
 
-    # TODO: Check if images exist and raise exception if not.
+    # Do some checks to verify the input.
+    if len(images) < 1:
+        raise ValueError("At least one image must be passed.")
+    if captions is not None and len(images) != len(captions):
+        raise ValueError("Number of images and captions must be equal.")
 
     # Encode local images/numpy arrays/PIL images to base64.
     encoded_images = []
@@ -63,7 +67,11 @@ def image_select(label: str, images: list, captions: list = None, key: str = Non
         else:  # url, use directly
             encoded_images.append(img)
 
+    # Pass everything to the frontend.
     component_value = _component_func(
         label=label, images=encoded_images, captions=captions, key=key, default=0
     )
+    
+    # The frontend component returns the index of the selected image but we want to 
+    # return the actual image.
     return images[component_value]
