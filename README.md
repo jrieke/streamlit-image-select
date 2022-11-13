@@ -114,3 +114,10 @@ cd ../..
 poetry build
 poetry publish
 ```
+
+## Changelog
+
+### 0.3.0 (November 13, 2022)
+- Add `use_container_width` parameter. 
+- Make `key` and `use_container_width` parameters keyword-only.
+- Refactor CSS classes.
