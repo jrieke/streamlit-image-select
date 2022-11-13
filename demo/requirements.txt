@@ -1,2 +1,2 @@
-streamlit==1.12.0
+streamlit==1.14.0
 streamlit-image-select
