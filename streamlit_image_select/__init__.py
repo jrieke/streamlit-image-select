@@ -35,15 +35,24 @@ def _encode_numpy(img):
     return f"data:image/jpeg;base64, {encoded}"
 
 
-def image_select(label: str, images: list, captions: list = None, key: str = None):
+def image_select(
+    label: str,
+    images: list,
+    captions: list = None,
+    *,
+    use_container_width: bool = True,
+    key: str = None,
+):
     """Shows several images and returns the image selected by the user.
 
     Args:
         label (str): The label shown above the images.
         images (list): The images to show. Allowed image formats are paths to local
             files, URLs, PIL images, and numpy arrays.
-        captions (list of str): The captions to show below the images. Defaults to None, 
+        captions (list of str): The captions to show below the images. Defaults to None,
             in which case no captions are shown.
+        use_container_width (bool, optional): Whether to stretch the images to the width
+            of the surrounding container. Defaults to True.
         key (str, optional): The key of the component. Defaults to None.
 
     Returns:
@@ -69,9 +78,14 @@ def image_select(label: str, images: list, captions: list = None, key: str = Non
 
     # Pass everything to the frontend.
     component_value = _component_func(
-        label=label, images=encoded_images, captions=captions, key=key, default=0
+        label=label,
+        images=encoded_images,
+        captions=captions,
+        use_container_width=use_container_width,
+        key=key,
+        default=0,
     )
-    
-    # The frontend component returns the index of the selected image but we want to 
+
+    # The frontend component returns the index of the selected image but we want to
     # return the actual image.
     return images[component_value]

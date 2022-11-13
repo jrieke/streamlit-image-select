@@ -1,5 +1,6 @@
 node_modules
 .DS_Store
+images/.DS_Store
 # package-lock.json
 
 # Byte-compiled / optimized / DLL files

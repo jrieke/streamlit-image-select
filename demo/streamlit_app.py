@@ -64,6 +64,11 @@ with st.echo():
 # "https://bagongkia.github.io/react-image-picker/0e1abaf656c3367fc89f628f0d52ad11.jpg",
 # "https://bagongkia.github.io/react-image-picker/0759b6e526e3c6d72569894e58329d89.jpg",
 
+st.info(
+    "Too wide? Set `use_container_width=False` to make the images not stretch.",
+    icon="↔️",
+)
+
 if isinstance(img, np.ndarray):
     position = (55, 15)
 elif isinstance(img, Image.Image):

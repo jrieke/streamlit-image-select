@@ -2,8 +2,8 @@ import { Streamlit, RenderData } from "streamlit-component-lib"
 
 const labelDiv = document.body.appendChild(document.createElement("label"))
 const label = labelDiv.appendChild(document.createTextNode(""))
-const imagesDiv = document.body.appendChild(document.createElement("div"))
-imagesDiv.classList.add("image-picker")
+const container = document.body.appendChild(document.createElement("div"))
+container.classList.add("container")
 
 /**
  * The component's render function. This will be called immediately after
@@ -27,7 +27,7 @@ function onRender(event: Event): void {
       })
     }
 
-    // TODO: Gray out the component if it's disabled. 
+    // TODO: Gray out the component if it's disabled.
   }
 
   label.textContent = data.args["label"]
@@ -35,21 +35,25 @@ function onRender(event: Event): void {
   let captions = data.args["captions"]
   // console.log(captions)
 
-  if (imagesDiv.childNodes.length === 0) {
+  if (container.childNodes.length === 0) {
     images.forEach((image: string, i: number) => {
-      let container = imagesDiv.appendChild(document.createElement("div"))
+      let item = container.appendChild(document.createElement("div"))
+      item.classList.add("item")
+      if (data.args["use_container_width"] === true) {
+        item.classList.add("stretch")
+      }
 
-      let box = container.appendChild(document.createElement("div"))
-      box.classList.add("box")
+      let box = item.appendChild(document.createElement("div"))
+      box.classList.add("image-box")
 
       let img = box.appendChild(document.createElement("img"))
       img.classList.add("image")
       img.src = image
 
       if (captions) {
-        let desc = container.appendChild(document.createElement("div"))
-        desc.classList.add("caption")
-        desc.textContent = captions[i]
+        let caption = item.appendChild(document.createElement("div"))
+        caption.classList.add("caption")
+        caption.textContent = captions[i]
       }
 
       // TODO: Change this to use `default` instead of just 0.
@@ -59,7 +63,7 @@ function onRender(event: Event): void {
       }
 
       img.onclick = function () {
-        imagesDiv.querySelectorAll(".selected").forEach((el) => {
+        container.querySelectorAll(".selected").forEach((el) => {
           el.classList.remove("selected")
         })
         Streamlit.setComponentValue(i)

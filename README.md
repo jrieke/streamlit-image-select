@@ -91,6 +91,8 @@ This copies the demo app to the root dir (so you have something to work with and
 your changes!) and then starts it. Now you can make changes to the Python or Javascript 
 code in `streamlit_image_select` and the demo app should update automatically!
 
+If nothing updates, make sure the variable `_RELEASE` in `streamlit_image_select/__init__.py` is set to `False`. 
+
 
 ### Publishing on PyPI
 
