@@ -8,7 +8,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 from PIL import Image
 
-_RELEASE = True
+_RELEASE = False
 
 if not _RELEASE:
     _component_func = components.declare_component(
@@ -42,6 +42,7 @@ def image_select(
     index: int = 0,
     *,
     use_container_width: bool = True,
+    return_value: str = "original",
     key: str = None,
 ):
     """Shows several images and returns the image selected by the user.
@@ -50,12 +51,15 @@ def image_select(
         label (str): The label shown above the images.
         images (list): The images to show. Allowed image formats are paths to local
             files, URLs, PIL images, and numpy arrays.
-        captions (list of str): The captions to show below the images. Defaults to 
+        captions (list of str): The captions to show below the images. Defaults to
             None, in which case no captions are shown.
-        index (int, optional): The index of the image that is selected by default. 
+        index (int, optional): The index of the image that is selected by default.
             Defaults to 0.
-        use_container_width (bool, optional): Whether to stretch the images to the 
+        use_container_width (bool, optional): Whether to stretch the images to the
             width of the surrounding container. Defaults to True.
+        return_value ("original" or "index", optional): Whether to return the
+            original object passed into `images` or the index of the selected image.
+            Defaults to "original".
         key (str, optional): The key of the component. Defaults to None.
 
     Returns:
@@ -65,16 +69,16 @@ def image_select(
 
     # Do some checks to verify the input.
     if len(images) < 1:
-        raise ValueError("`images` is empty but at least one image must be passed.")
+        raise ValueError("At least one image must be passed but `images` is empty.")
     if captions is not None and len(images) != len(captions):
         raise ValueError(
-            f"`captions` has {len(captions)} elements and `images` has {len(images)} "
-            "elements but the number of images and captions must be equal."
+            "The number of images and captions must be equal but `captions` has "
+            f"{len(captions)} elements and `images` has {len(images)} elements."
         )
     if index >= len(images):
         raise ValueError(
-            f"`index` is {index} but it must be smaller than the number of images "
-            f"({len(images)})."
+            f"`index` must be smaller than the number of images ({len(images)}) "
+            f"but it is {index}."
         )
 
     # Encode local images/numpy arrays/PIL images to base64.
@@ -100,4 +104,12 @@ def image_select(
 
     # The frontend component returns the index of the selected image but we want to
     # return the actual image.
-    return images[component_value]
+    if return_value == "original":
+        return images[component_value]
+    elif return_value == "index":
+        return component_value
+    else:
+        raise ValueError(
+            "`return_value` must be either 'original' or 'index' "
+            f"but is '{return_value}'."
+        )
