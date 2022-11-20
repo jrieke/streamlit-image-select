@@ -42,9 +42,6 @@ You can pass in different image formats: local files, URLs, PIL images, and nump
 arrays. Captions are optional!
 """
 
-with st.expander("API reference"):
-    st.help(image_select)
-
 with st.echo():
     from streamlit_image_select import image_select
 
@@ -108,3 +105,9 @@ st.info(
 with st.echo():
     st.write(str(img)[:100])
     st.image(add_sunglasses(img, position))
+
+"""
+## Step 3: Get creative!
+Here's the complete API reference:
+"""
+st.help(image_select)
