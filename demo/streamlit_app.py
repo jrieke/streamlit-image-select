@@ -37,6 +37,11 @@ st.write(
 )
 """
 # Demo for [streamlit-image-select](https://github.com/jrieke/streamlit-image-select)
+## Step 1: Install
+"""
+st.code("pip install streamlit-image-select")
+
+"""
 ## Step 1: Create the component
 You can pass in different image formats: local files, URLs, PIL images, and numpy 
 arrays. You can also add captions (optional)!
