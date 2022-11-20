@@ -98,8 +98,8 @@ else:
 
 """
 ## Step 3: Use the return value
-It's just the same value you passed into the list of images above. Note that you can 
-pipe it directly into `st.image` (or add some cool 😎). 
+The return value is just the same object you passed into the list of images above. 
+Note that you can pipe it directly into `st.image` (or add some cool sunglasses 😎). 
 """
 
 with st.echo():
