@@ -56,8 +56,7 @@ function onRender(event: Event): void {
         caption.textContent = captions[i]
       }
 
-      // TODO: Change this to use `default` instead of just 0.
-      if (i === 0) {
+      if (i === data.args["index"]) {
         box.classList.add("selected")
         img.classList.add("selected")
       }

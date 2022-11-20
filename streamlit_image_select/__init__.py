@@ -39,6 +39,7 @@ def image_select(
     label: str,
     images: list,
     captions: list = None,
+    index: int = 0,
     *,
     use_container_width: bool = True,
     key: str = None,
@@ -51,6 +52,7 @@ def image_select(
             files, URLs, PIL images, and numpy arrays.
         captions (list of str): The captions to show below the images. Defaults to None,
             in which case no captions are shown.
+        index (int): The index of the image that is selected by default. Defaults to 0.
         use_container_width (bool, optional): Whether to stretch the images to the width
             of the surrounding container. Defaults to True.
         key (str, optional): The key of the component. Defaults to None.
@@ -62,9 +64,17 @@ def image_select(
 
     # Do some checks to verify the input.
     if len(images) < 1:
-        raise ValueError("At least one image must be passed.")
+        raise ValueError("`images` is empty but at least one image must be passed.")
     if captions is not None and len(images) != len(captions):
-        raise ValueError("Number of images and captions must be equal.")
+        raise ValueError(
+            f"`captions` has {len(captions)} elements and `images` has {len(images)} "
+            "elements but the number of images and captions must be equal."
+        )
+    if index >= len(images):
+        raise ValueError(
+            f"`index` is {index} but it must be smaller than the number of images "
+            f"({len(images)})."
+        )
 
     # Encode local images/numpy arrays/PIL images to base64.
     encoded_images = []
@@ -81,9 +91,10 @@ def image_select(
         label=label,
         images=encoded_images,
         captions=captions,
+        index=index,
         use_container_width=use_container_width,
         key=key,
-        default=0,
+        default=index,
     )
 
     # The frontend component returns the index of the selected image but we want to
