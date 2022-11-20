@@ -42,7 +42,7 @@ st.write(
 st.code("pip install streamlit-image-select")
 
 """
-## Step 1: Create the component
+## Step 2: Create the component
 You can pass in different image formats: local files, URLs, PIL images, and numpy 
 arrays. You can also add captions (optional)!
 """
@@ -97,7 +97,7 @@ else:
 #     position = (100, 100)
 
 """
-## Step 2: Use the return value
+## Step 3: Use the return value
 It's just the same value you passed into the list of images above. Note that you can 
 pipe it directly into `st.image` (or add some cool 😎). 
 """
@@ -112,7 +112,7 @@ st.info(
 )
 
 """
-## Step 3: Get creative!
+## Step 4: Get creative!
 Here's the complete API reference:
 """
 st.help(image_select)
