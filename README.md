@@ -117,6 +117,9 @@ poetry publish
 
 ## Changelog
 
+### 0.5.1 (November 20, 2022)
+- Hotfix, forgot to switch the RELEASE variable back to True :wink:
+
 ### 0.5.0 (November 20, 2022)
 - Added `return_value` parameter to be able to get the index of the selected image.
 - Improved error messages. 
