@@ -117,6 +117,10 @@ poetry publish
 
 ## Changelog
 
+### 0.5.0 (November 20, 2022)
+- Added `return_value` parameter to be able to get the index of the selected image.
+- Improved error messages. 
+- 
 ### 0.4.0 (November 20, 2022)
 - Added `index` parameter to set the initially selected image.
 - Improved input arg checks. 

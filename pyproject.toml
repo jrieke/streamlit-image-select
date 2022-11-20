@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "streamlit-image-select"
-version = "0.4.0"
+version = "0.5.0"
 description = "🖼️ An image select component for Streamlit"
 authors = ["Johannes Rieke <johannes.rieke@gmail.com>"]
 license = "MIT"
