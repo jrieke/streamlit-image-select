@@ -100,10 +100,9 @@ It's just the same value you passed into the list of images above. Note that you
 pipe it directly into `st.image` (or add some cool 😎). 
 """
 
-st.success(
-    "If you want to get the index of the selected image (instead of the image itself), "
-    'you can set `return_value="index"`.',
-    icon="🍀",
+st.info(
+    'Want the index of the selected image instead? Set `return_value="index"`.',
+    icon="🔢",
 )
 
 with st.echo():
