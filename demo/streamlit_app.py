@@ -37,7 +37,7 @@ st.write(
 )
 """
 # Demo for [streamlit-image-select](https://github.com/jrieke/streamlit-image-select)
-## Step 1: Install
+## Step 1
 """
 st.code("pip install streamlit-image-select")
 
@@ -118,5 +118,6 @@ Here's the complete API reference:
 st.help(image_select)
 
 """
-## Step 5: [![Star](https://img.shields.io/github/stars/jrieke/streamlit-image-select?style=social)](https://github.com/jrieke/streamlit-image-select)
+## Step 5
+[![Star](https://img.shields.io/github/stars/jrieke/streamlit-image-select?style=social)](https://github.com/jrieke/streamlit-image-select)
 """
