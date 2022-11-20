@@ -106,5 +106,5 @@ st.info(
 )
 
 with st.echo():
-    st.write(img)
+    st.write(str(img)[:100])
     st.image(add_sunglasses(img, position))
