@@ -97,8 +97,15 @@ else:
 """
 ## Step 2: Use the return value
 It's just the same value you passed into the list of images above. Note that you can 
-pipe it directly into `st.image` (or add some cool 😎).
+pipe it directly into `st.image` (or add some cool 😎). 
 """
+
+st.success(
+    "If you want to get the index of the selected image (instead of the image itself), "
+    'you can set `return_value="index"`.',
+    icon="🍀",
+)
+
 with st.echo():
     st.write(img)
     st.image(add_sunglasses(img, position))
