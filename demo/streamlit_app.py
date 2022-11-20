@@ -118,5 +118,5 @@ Here's the complete API reference:
 st.help(image_select)
 
 """
-## Step 5: ![Star](https://img.shields.io/github/stars/jrieke/streamlit-image-select?style=social)
+## Step 5: [![Star](https://img.shields.io/github/stars/jrieke/streamlit-image-select?style=social)](https://github.com/jrieke/streamlit-image-select)
 """
