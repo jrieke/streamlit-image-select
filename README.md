@@ -117,7 +117,11 @@ poetry publish
 
 ## Changelog
 
+### 0.4.0 (November 20, 2022)
+- Added `index` parameter to set the initially selected image.
+- Improved input arg checks. 
+
 ### 0.3.0 (November 13, 2022)
-- Add `use_container_width` parameter. 
-- Make `key` and `use_container_width` parameters keyword-only.
-- Refactor CSS classes.
+- Added `use_container_width` parameter to customize the width of the component. 
+- Made `key` and `use_container_width` parameters keyword-only.
+- Refactored CSS classes.
