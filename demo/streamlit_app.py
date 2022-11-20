@@ -97,14 +97,14 @@ It's just the same value you passed into the list of images above. Note that you
 pipe it directly into `st.image` (or add some cool 😎). 
 """
 
+with st.echo():
+    st.write(str(img)[:100])
+    st.image(add_sunglasses(img, position))
+
 st.info(
     'Want the index of the selected image instead? Set `return_value="index"`.',
     icon="🔢",
 )
-
-with st.echo():
-    st.write(str(img)[:100])
-    st.image(add_sunglasses(img, position))
 
 """
 ## Step 3: Get creative!
