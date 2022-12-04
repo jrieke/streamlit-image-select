@@ -39,7 +39,8 @@ See [the demo app](https://image-select.streamlitapp.com/) for a detailed guide!
 
 ## Development
 
-Note: you only need to run these steps if you want to change this component or 
+> **Note**
+> You only need to run these steps if you want to change this component or 
 contribute to its development!
 
 ### Setup
