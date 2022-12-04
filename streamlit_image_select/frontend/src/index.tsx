@@ -14,22 +14,6 @@ function onRender(event: Event): void {
   // Get the RenderData from the event
   const data = (event as CustomEvent<RenderData>).detail
 
-  if (data.theme) {
-    labelDiv.style.font = data.theme.font
-    labelDiv.style.color = data.theme.textColor
-    if (data.theme.base === "dark") {
-      document.body.querySelectorAll(".box, .caption").forEach((el) => {
-        el.classList.add("dark")
-      })
-    } else {
-      document.body.querySelectorAll(".box, .caption").forEach((el) => {
-        el.classList.remove("dark")
-      })
-    }
-
-    // TODO: Gray out the component if it's disabled.
-  }
-
   label.textContent = data.args["label"]
   let images = data.args["images"]
   let captions = data.args["captions"]
@@ -70,6 +54,22 @@ function onRender(event: Event): void {
         img.classList.add("selected")
       }
     })
+  }
+
+  if (data.theme) {
+    labelDiv.style.font = data.theme.font
+    labelDiv.style.color = data.theme.textColor
+    if (data.theme.base === "dark") {
+      document.body.querySelectorAll(".box, .caption").forEach((el) => {
+        el.classList.add("dark")
+      })
+    } else {
+      document.body.querySelectorAll(".box, .caption").forEach((el) => {
+        el.classList.remove("dark")
+      })
+    }
+
+    // TODO: Gray out the component if it's disabled.
   }
 
   // We tell Streamlit to update our frameHeight after each render event, in
