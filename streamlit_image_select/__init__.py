@@ -19,14 +19,14 @@ else:
     _component_func = components.declare_component("image_select", path=path)
 
 
-@st.experimental_memo
+@st.cache_data
 def _encode_file(img):
     with open(img, "rb") as img_file:
         encoded = base64.b64encode(img_file.read()).decode()
     return f"data:image/jpeg;base64, {encoded}"
 
 
-@st.experimental_memo
+@st.cache_data
 def _encode_numpy(img):
     pil_img = Image.fromarray(img)
     buffer = io.BytesIO()
