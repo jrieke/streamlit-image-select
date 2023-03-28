@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "streamlit-image-select"
-version = "0.5.1"
+version = "0.6.0"
 description = "🖼️ An image select component for Streamlit"
 authors = ["Johannes Rieke <johannes.rieke@gmail.com>"]
 license = "MIT"
@@ -9,8 +9,8 @@ readme = "README.md"
 include = ["streamlit_image_select/frontend/build/**/*"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-streamlit = "^1.12.0"
+python = "^3.8, !=3.9.7"
+streamlit = "^1.19.0"
 
 [tool.poetry.dev-dependencies]
 watchdog = "^2.1.9"

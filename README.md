@@ -118,6 +118,10 @@ poetry publish
 
 ## Changelog
 
+### 0.6.0 (March 28, 2023)
+- Removed `st.experimental_memo`, which is deprecated. 
+- Changed minimum version of Streamlit to 1.19.
+  
 ### 0.5.1 (November 20, 2022)
 - Hotfix, forgot to switch the RELEASE variable back to True :wink:
 
