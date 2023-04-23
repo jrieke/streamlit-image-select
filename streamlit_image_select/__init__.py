@@ -8,7 +8,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 from PIL import Image
 
-_RELEASE = True
+_RELEASE = False
 
 if not _RELEASE:
     _component_func = components.declare_component(
@@ -75,7 +75,7 @@ def image_select(
             "The number of images and captions must be equal but `captions` has "
             f"{len(captions)} elements and `images` has {len(images)} elements."
         )
-    if index >= len(images):
+    if index is not None and index >= len(images):
         raise ValueError(
             f"`index` must be smaller than the number of images ({len(images)}) "
             f"but it is {index}."
@@ -92,7 +92,7 @@ def image_select(
             encoded_images.append(img)
 
     # Pass everything to the frontend.
-    component_value = _component_func(
+    component_values = _component_func(
         label=label,
         images=encoded_images,
         captions=captions,
@@ -104,10 +104,11 @@ def image_select(
 
     # The frontend component returns the index of the selected image but we want to
     # return the actual image.
+    print(f'{component_values=}')
     if return_value == "original":
-        return images[component_value]
+        return [images[component_value] for component_value in component_values]
     elif return_value == "index":
-        return component_value
+        return component_values
     else:
         raise ValueError(
             "`return_value` must be either 'original' or 'index' "
