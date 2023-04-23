@@ -65,11 +65,7 @@ function onRender(event: Event): void {
       }
 
       img.onclick = function () {
-        // To disable multi-select, uncomment the following lines.
-        // container.querySelectorAll(".selected").forEach((el) => {
-        //   el.classList.remove("selected")
-        // })
-        // check if the image is already selected
+        // check if the image is already selected, then un-select it and remove it from the array
         if (box.classList.contains("selected")) {
           selected_component_values.splice(selected_component_values.indexOf(i), 1)
           box.classList.remove("selected")
