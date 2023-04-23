@@ -4,6 +4,7 @@ const labelDiv = document.body.appendChild(document.createElement("label"))
 const label = labelDiv.appendChild(document.createTextNode(""))
 const container = document.body.appendChild(document.createElement("div"))
 container.classList.add("container")
+const selected_component_values: number[] = []
 
 /**
  * The component's render function. This will be called immediately after
@@ -56,20 +57,30 @@ function onRender(event: Event): void {
         caption.textContent = captions[i]
       }
 
-      if (i === data.args["index"]) {
+      // check if i is in the index array
+      if (data.args["indices"] !== undefined && data.args["indices"].includes(i)) {
         box.classList.add("selected")
         img.classList.add("selected")
+        selected_component_values.push(i)
       }
 
       img.onclick = function () {
-        container.querySelectorAll(".selected").forEach((el) => {
-          el.classList.remove("selected")
-        })
-        Streamlit.setComponentValue(i)
-        box.classList.add("selected")
-        img.classList.add("selected")
+        // check if the image is already selected, then un-select it and remove it from the array
+        if (box.classList.contains("selected")) {
+          selected_component_values.splice(selected_component_values.indexOf(i), 1)
+          box.classList.remove("selected")
+          img.classList.remove("selected")
+        } else {
+          selected_component_values.push(i)
+          box.classList.add("selected")
+          img.classList.add("selected")
+        }
+        selected_component_values.sort()
+        Streamlit.setComponentValue(selected_component_values)
       }
     })
+    // return selected_component_values
+    Streamlit.setComponentValue(selected_component_values)
   }
 
   // We tell Streamlit to update our frameHeight after each render event, in
