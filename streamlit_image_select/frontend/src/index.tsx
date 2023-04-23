@@ -57,7 +57,8 @@ function onRender(event: Event): void {
         caption.textContent = captions[i]
       }
 
-      if (data.args["index"] !== null && i === data.args["index"]) {
+      // check if i is in the index array
+      if (data.args["indices"] !== undefined && data.args["indices"].includes(i)) {
         box.classList.add("selected")
         img.classList.add("selected")
         selected_component_values.push(i)

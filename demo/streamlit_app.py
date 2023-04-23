@@ -59,7 +59,7 @@ with st.echo():
             np.array(Image.open("images/cat4.jpeg")),
         ],
         captions=["A cat", "Another cat", "Oh look, a cat!", "Guess what, a cat..."],
-        index=None
+        indices=None
     )
 
 # st.file_uploader("Or upload your own cat!", type=["jpg", "jpeg", "png"])
@@ -77,7 +77,7 @@ st.info(
 The return value is just the same object you passed into the list of images above. 
 Note that you can pipe it directly into `st.image` (or add some cool sunglasses 😎). 
 """
-if imgs is None:
+if not imgs:
     st.warning("No image selected!")
 else:
     for img in imgs:
