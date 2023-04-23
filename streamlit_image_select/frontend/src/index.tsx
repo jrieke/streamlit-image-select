@@ -61,12 +61,7 @@ function onRender(event: Event): void {
         box.classList.add("selected")
         img.classList.add("selected")
         selected_component_values.push(i)
-      }else{
-        box.classList.remove("selected")
-        img.classList.remove("selected")
-        selected_component_values.splice(selected_component_values.indexOf(i), 1)
       }
-      Streamlit.setComponentValue(selected_component_values)
 
       img.onclick = function () {
         // To disable multi-select, uncomment the following lines.
@@ -83,9 +78,12 @@ function onRender(event: Event): void {
           box.classList.add("selected")
           img.classList.add("selected")
         }
+        selected_component_values.sort()
         Streamlit.setComponentValue(selected_component_values)
       }
     })
+    // return selected_component_values
+    Streamlit.setComponentValue(selected_component_values)
   }
 
   // We tell Streamlit to update our frameHeight after each render event, in
