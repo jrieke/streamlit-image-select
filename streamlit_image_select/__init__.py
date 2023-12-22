@@ -1,12 +1,13 @@
 import base64
 import io
 import os
-from pathlib import Path
-
 import numpy as np
+from PIL import Image
+from pathlib import Path
+from typing import Optional
 import streamlit as st
 import streamlit.components.v1 as components
-from PIL import Image
+from streamlit.type_util import LabelVisibility
 
 _RELEASE = True
 
@@ -43,7 +44,11 @@ def image_select(
     *,
     use_container_width: bool = True,
     return_value: str = "original",
+    center: bool = False,
+    width: Optional[int] = None,
+    height: Optional[int] = None,
     key: str = None,
+    label_visibility: LabelVisibility = "visible",
 ):
     """Shows several images and returns the image selected by the user.
 
@@ -60,7 +65,18 @@ def image_select(
         return_value ("original" or "index", optional): Whether to return the
             original object passed into `images` or the index of the selected image.
             Defaults to "original".
+        center (bool, optional): Center the image list
+            Defaults to False
+        width (int or None, optional): Set image width
+            Defaults to None
+        height (int or None, optional): Set image height
+            Defaults to None
         key (str, optional): The key of the component. Defaults to None.
+        label_visibility : "visible", "hidden", or "collapsed"
+            The visibility of the label. If "hidden", the label doesn't show but there
+            is still empty space for it above the widget (equivalent to label="").
+            If "collapsed", both the label and the space are removed. Default is
+            "visible".
 
     Returns:
         (any): The image selected by the user (same object and type as passed to
@@ -98,7 +114,11 @@ def image_select(
         captions=captions,
         index=index,
         use_container_width=use_container_width,
+        center=center,
+        width=width,
+        height=height,
         key=key,
+        label_visibility=label_visibility,
         default=index,
     )
 

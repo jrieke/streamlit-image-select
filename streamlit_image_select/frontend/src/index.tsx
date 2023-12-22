@@ -5,6 +5,20 @@ const label = labelDiv.appendChild(document.createTextNode(""))
 const container = document.body.appendChild(document.createElement("div"))
 container.classList.add("container")
 
+const setImageHeightWidth = (height: any, width: any, item: HTMLDivElement, box: HTMLDivElement, img: HTMLImageElement) => {
+  if (height) {
+    box.style.height = `${height + 10}px`
+    img.style.height = `${height}px`
+  }
+
+  if (width) {
+    item.classList.remove("item")
+    box.style.width = `${width + 10}px`
+    box.style.minWidth = `${width + 10}px`
+    img.style.width = `${width}px`
+  }
+}
+
 /**
  * The component's render function. This will be called immediately after
  * the component is initially loaded, and then again every time the
@@ -30,7 +44,25 @@ function onRender(event: Event): void {
     // TODO: Gray out the component if it's disabled.
   }
 
+  let center = data.args["center"]
+  let width = data.args["width"]
+  let height = data.args["height"]
+
+  if (center) {
+    container.style.justifyContent = "center"
+  }
+
   label.textContent = data.args["label"]
+  let label_visibility = data.args["label_visibility"]
+  switch (label_visibility) {
+    case "hidden":
+      labelDiv.style.visibility = "hidden"
+      break
+    case "collapsed":
+      labelDiv.remove()
+      break
+  }
+  
   let images = data.args["images"]
   let captions = data.args["captions"]
   // console.log(captions)
@@ -49,6 +81,8 @@ function onRender(event: Event): void {
       let img = box.appendChild(document.createElement("img"))
       img.classList.add("image")
       img.src = image
+
+      setImageHeightWidth(height, width, item, box, img)
 
       if (captions) {
         let caption = item.appendChild(document.createElement("div"))
