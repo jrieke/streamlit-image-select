@@ -108,6 +108,8 @@ def image_select(
         return images[component_value]
     elif return_value == "index":
         return component_value
+    elif return_value == "both":
+        return component_value, images[component_value]
     else:
         raise ValueError(
             "`return_value` must be either 'original' or 'index' "
