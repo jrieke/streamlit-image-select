@@ -32,9 +32,11 @@ label {
     flex-wrap: wrap;
     gap: 0.5rem;
 }
+
 .item {
     width: 10rem;
 }
+
 .item.stretch {
     flex: 1;
 }
@@ -87,8 +89,9 @@ label {
     font-weight: 400;
     font-size: 14px;
     color: rgba(49, 51, 63, 0.6);
+    text-align: center;
 }
 
 .caption.dark {
-    color:rgba(250, 250, 250, 0.6);
+    color: rgba(250, 250, 250, 0.6);
 }
