@@ -89,6 +89,7 @@ label {
     font-weight: 400;
     font-size: 14px;
     color: rgba(49, 51, 63, 0.6);
+    text-align: center;
 }
 
 .caption.dark {
